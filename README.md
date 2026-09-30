@@ -88,6 +88,20 @@ We will use individual local development environments. Git is the source of trut
    - Windows: `.venv\Scripts\activate`
    - Linux/macOS: `source .venv/bin/activate`
 
+5. Install the shared development tools:
+
+   ```
+   python -m pip install -r requirements/dev.txt
+   ```
+
+6. Check your setup:
+
+   ```
+   python -m pytest
+   ```
+
+   All tests must pass. They check for Python 3.11.x, an active virtual environment and the agreed folder structure.
+
 ## Development branches
 
 ```
@@ -114,11 +128,19 @@ feature/* → individual development
 
 ## Running locally
 
-Nothing to run yet. Entry points will be documented here as they are added under `src/pipeline/` and `scripts/`.
+There is no pipeline to run yet. For now, "running locally" means the setup check passes (`python -m pytest`, see Development setup). Entry points will be documented here as they are added under `src/pipeline/` and `scripts/`.
 
 ## Testing
 
-Tests live in `tests/`. Run all tests locally before every push and pull request. The exact test command will be documented here once the test tooling is added.
+Tests live in `tests/`. Run all tests with your virtual environment active, before every push and pull request:
+
+```
+python -m pytest
+```
+
+## Input/output contracts
+
+Before model implementation starts, the team agrees the hand-offs between members. See [docs/contracts/CONTRACT_DRAFT.md](docs/contracts/CONTRACT_DRAFT.md). Changing an agreed contract requires a pull request reviewed by every member it affects.
 
 ## Contribution workflow
 
