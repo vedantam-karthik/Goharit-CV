@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Environment
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Data
+data/
+dataset/
+datasets/
+*.jpg
+*.jpeg
+*.png
+*.tif
+*.tiff
+
+# ML artifacts
+*.pth
+*.pt
+*.onnx
+checkpoints/
+weights/
+models/
+runs/
+wandb/
+mlruns/
+
+# Logs
+logs/
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
