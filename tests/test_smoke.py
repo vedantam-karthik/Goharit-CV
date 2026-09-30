@@ -32,8 +32,8 @@ AGREED_FOLDERS = [
 ]
 
 
-def test_python_is_3_11():
-    assert sys.version_info[:2] == (3, 11), f"Team standard is Python 3.11.x, found {sys.version.split()[0]}"
+def test_python_is_3_12():
+    assert sys.version_info[:2] == (3, 12), f"Team standard is Python 3.12.x, found {sys.version.split()[0]}"
 
 
 def test_running_inside_a_virtual_environment():
