@@ -57,7 +57,7 @@ We will use individual local development environments. Git is the source of trut
 
 ## Development setup
 
-**Python version: 3.11.x.** Everyone uses this version. Do not install project packages globally.
+**Python version: 3.12.x.** Everyone uses this version (Rasterio 1.5.1 requires Python 3.12 or newer). Do not install project packages globally.
 
 1. Clone the repository and check it:
 
@@ -68,14 +68,14 @@ We will use individual local development environments. Git is the source of trut
    git branch
    ```
 
-2. Check your Python and pip versions (both should report Python 3.11.x):
+2. Check your Python and pip versions (both should report Python 3.12.x):
 
    ```
    python --version
    pip --version
    ```
 
-   On Windows, if `python` points to another version, install 3.11 with `py install 3.11` and use `py -V:3.11` in place of `python` below.
+   On Windows, if `python` points to another version, install 3.12 with `py install 3.12` and use `py -V:3.12` in place of `python` when creating the virtual environment. If you created a `.venv` with another Python version earlier, delete it and create it again.
 
 3. Create your own virtual environment inside the repository. It is ignored by git.
 
@@ -88,19 +88,34 @@ We will use individual local development environments. Git is the source of trut
    - Windows: `.venv\Scripts\activate`
    - Linux/macOS: `source .venv/bin/activate`
 
-5. Install the shared development tools:
+5. Install the exact team environment:
 
    ```
-   python -m pip install -r requirements/dev.txt
+   python -m pip install -r requirements/lock.txt
    ```
 
 6. Check your setup:
 
    ```
    python -m pytest
+   ruff check .
    ```
 
-   All tests must pass. They check for Python 3.11.x, an active virtual environment and the agreed folder structure.
+   All tests must pass. They check for Python 3.12.x, an active virtual environment, the agreed folder structure, and that every pinned package is installed at its exact version.
+
+### Dependencies
+
+| File | Purpose |
+|---|---|
+| `requirements/base.txt` | Pinned runtime libraries (PyYAML, Pydantic, Pydantic Settings, Rasterio, Shapely, PyProj, scikit-learn, NumPy, OpenCV headless, Pillow) |
+| `requirements/dev.txt` | `base.txt` plus pytest and Ruff |
+| `requirements/lock.txt` | Every installed package at its exact version, including indirect dependencies. **Install from this file.** |
+
+To add or change a dependency:
+1. Edit `base.txt` or `dev.txt`.
+2. In a fresh Python 3.12 venv, run `python -m pip install -r requirements/dev.txt`, then regenerate `lock.txt` from `python -m pip freeze`, keeping its header.
+3. Update `tests/test_dependencies.py` if you added a package.
+4. Open a pull request. Dependency changes affect everyone, so they need team review.
 
 ## Development branches
 

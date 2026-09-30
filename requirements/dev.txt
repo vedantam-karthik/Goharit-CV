@@ -1,4 +1,5 @@
-# Development/test tools shared by the whole team.
-# Model and geospatial libraries are added by each owner as their work needs them,
-# through a reviewed pull request.
-pytest>=8.0
+# Runtime dependencies plus development/test tools.
+# Change only through a reviewed pull request, then regenerate requirements/lock.txt.
+-r base.txt
+pytest==9.1.1
+ruff==0.16.9

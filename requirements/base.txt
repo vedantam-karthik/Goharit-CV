@@ -1,0 +1,12 @@
+# Runtime dependencies shared by the whole team (Python 3.12.x).
+# Change only through a reviewed pull request, then regenerate requirements/lock.txt.
+PyYAML==6.0.3
+pydantic==2.13.4
+pydantic-settings==2.15.0
+rasterio==1.5.1
+shapely==2.1.2
+pyproj==3.7.2
+scikit-learn==1.9.0
+numpy==2.5.3
+opencv-python-headless==5.0.0.93
+pillow==12.3.0
