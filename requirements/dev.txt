@@ -1,0 +1,4 @@
+# Development/test tools shared by the whole team.
+# Model and geospatial libraries are added by each owner as their work needs them,
+# through a reviewed pull request.
+pytest>=8.0
